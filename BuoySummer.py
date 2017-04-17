@@ -34,7 +34,10 @@ for yr in range(len(year)): # loop over all of the years in the range
         # the water temperature column, also define NaN values as 999.0
         mean = bf.SummerMean(data,year[yr]) # calculate the mean temperature
         #for the summer period
-        means.append(mean) # hold on to the mean value for now
+        if np.isnan(mean[0]) == False: # throw out NaN values. Data is missing
+        # in two data files. this produces NaNs. I want to throw out the NaNs
+        # and calculate averages with the remaining values
+            means.append(mean) # hold on to the mean value for now
     print(year[yr]) # print the year, just so I can tell it's doing something
     # as it runs
     SummerMeans.append(float(np.mean(means))) # average the values from the
@@ -43,4 +46,3 @@ for yr in range(len(year)): # loop over all of the years in the range
 bf.SaveFile(year,SummerMeans) # save a .csv file of the temperature data
 # indexed by year
 bf.SummerPlot(year,SummerMeans) # *bonus function plots the temperature data
-
