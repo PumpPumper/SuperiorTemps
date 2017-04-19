@@ -61,6 +61,7 @@ def SummerPlot(year,data):
     plt.xlabel('Year')
     plt.ylabel('Temperature [°C]')
     plt.title('Lake Superior Summertime (Jul-Sep)\nAverage Surface Water Temperature')
+    plt.show()
 
 # This function saves a .csv file of the averaged temperatures
 def SaveFile(year,data):
